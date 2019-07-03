@@ -1,0 +1,2 @@
+enable: true
+template: "&2#{PLAYER}&r: #{MESSAGE}"

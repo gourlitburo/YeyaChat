@@ -1,0 +1,12 @@
+main: yy.gourlitburo.yeyachat.Main
+name: YeyaChat
+version: 0.0.0
+author: Zack Guard
+description: A barebones chat message formatter.
+commands:
+  yeyachat:
+    aliases: [yc]
+    description: Manage YeyaJoinMessage.
+    usage: "Usage: /yc reload"
+    permission: bukkit.op
+    permission-message: "`bukkit.op' permission required to manage YeyaChat."

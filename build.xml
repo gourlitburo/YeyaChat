@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="YeyaChat" default="makejar" basedir=".">
+
+    <path id="classpath">
+        <fileset dir="lib">
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
+
+    <target name="clean">
+        <delete file="target/${ant.project.name}.jar"/>
+    </target>
+
+    <target name="compile">
+        <javac includeantruntime="false" destdir="bin">
+            <src path="src"/>
+            <classpath refid="classpath" />
+        </javac>
+    </target>
+
+    <target name="makejar" depends="clean,compile">
+        <mkdir dir="target"></mkdir>
+        <jar destfile="target/${ant.project.name}.jar">
+            <fileset dir="bin"></fileset>
+            <fileset file="plugin.yml"></fileset>
+            <fileset file="config.yml"></fileset>
+        </jar>
+    </target>
+
+</project>
