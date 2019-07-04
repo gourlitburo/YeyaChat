@@ -1,6 +1,7 @@
 main: yy.gourlitburo.yeyachat.Main
 name: YeyaChat
 version: 0.0.0
+api-version: 1.14
 author: Zack Guard
 description: A barebones chat message formatter.
 commands:
