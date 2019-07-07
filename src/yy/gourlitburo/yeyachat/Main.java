@@ -15,6 +15,8 @@ public class Main extends JavaPlugin {
   PluginManager manager = Bukkit.getPluginManager();
   StringFormatter formatter = new StringFormatter();
 
+  final String PERM_PING_IMMUNE = "yeyachat.ping.immune";
+
   @Override
   public void onEnable() {
     manager.registerEvents(new AsyncPlayerChatEventHandler(this), this);

@@ -7,7 +7,13 @@ description: A barebones chat message formatter.
 commands:
   yeyachat:
     aliases: [yc]
-    description: Manage YeyaJoinMessage.
+    description: Manage YeyaChat.
     usage: "Usage: /yc reload"
-    permission: bukkit.op
-    permission-message: "`bukkit.op' permission required to manage YeyaChat."
+    permission: yeyachat.manage
+permissions:
+  yeyachat.manage:
+    default: op
+  yeyachat.ping:
+    default: true
+  yeyachat.ping.immune:
+    default: false

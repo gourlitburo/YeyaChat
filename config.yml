@@ -1,2 +1,4 @@
 enable: true
 template: "&2#{PLAYER}&r: #{MESSAGE}"
+ping:
+  enable: true
