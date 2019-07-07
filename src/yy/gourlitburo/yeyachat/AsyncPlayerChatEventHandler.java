@@ -14,13 +14,17 @@ class AsyncPlayerChatEventHandler implements Listener {
 
   private Main plugin;
   
-  private static final Pattern pattern = Pattern.compile("@[A-z0-9_]{3,16}");
+  private static final Pattern pingPattern = Pattern.compile("@[A-z0-9_]{3,16}");
 
   public AsyncPlayerChatEventHandler(Main instance) {
     plugin = instance;
   }
 
-  private void sendPing(Player player) {
+  private static String colorize(String text) {
+    return ChatColor.translateAlternateColorCodes('&', text);
+  }
+
+  private static void sendPing(Player player) {
     player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 1);
   }
 
@@ -28,14 +32,14 @@ class AsyncPlayerChatEventHandler implements Listener {
   public void onAsyncPlayerChat(AsyncPlayerChatEvent event) {
     if (plugin.getConfig().getBoolean("enable")) {
       // color and set format string
-      String coloredMessage = ChatColor.translateAlternateColorCodes('&', event.getMessage());
+      String coloredMessage = colorize(event.getMessage());
       event.setMessage(coloredMessage);
-      String coloredFormatString = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("template"));
+      String coloredFormatString = colorize(plugin.getConfig().getString("template"));
       event.setFormat(coloredFormatString);
 
       if (plugin.getConfig().getBoolean("ping.enable")) {
         // look for pings in text and ping accordingly
-        Matcher matcher = pattern.matcher(event.getMessage());
+        Matcher matcher = pingPattern.matcher(event.getMessage());
         while (matcher.find()) {
           String matched = matcher.group(0);
           String name = matched.substring(1, matched.length());
