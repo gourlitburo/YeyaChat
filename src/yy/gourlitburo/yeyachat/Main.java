@@ -14,6 +14,7 @@ public class Main extends JavaPlugin {
   Server server = getServer();
   PluginManager manager = Bukkit.getPluginManager();
 
+  final String PERM_PING = "yeyachat.ping";
   final String PERM_PING_IMMUNE = "yeyachat.ping.immune";
 
   @Override

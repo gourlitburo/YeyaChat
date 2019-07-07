@@ -37,7 +37,7 @@ class AsyncPlayerChatEventHandler implements Listener {
       String coloredFormatString = colorize(plugin.getConfig().getString("template"));
       event.setFormat(coloredFormatString);
 
-      if (plugin.getConfig().getBoolean("ping.enable")) {
+      if (plugin.getConfig().getBoolean("ping.enable") && event.getPlayer().hasPermission(plugin.PERM_PING)) {
         // look for pings in text and ping accordingly
         Matcher matcher = pingPattern.matcher(event.getMessage());
         while (matcher.find()) {
