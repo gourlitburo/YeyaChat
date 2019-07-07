@@ -1,9 +1,9 @@
 package yy.gourlitburo.yeyachat;
 
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -27,17 +27,11 @@ class AsyncPlayerChatEventHandler implements Listener {
   @EventHandler
   public void onAsyncPlayerChat(AsyncPlayerChatEvent event) {
     if (plugin.getConfig().getBoolean("enable")) {
-      // intercept chat event and send out our message
-      event.setCancelled(true);
-      String template = plugin.getConfig().getString("template");
-      String formatted = plugin.formatter.format(template, Map.of(
-        "PLAYER", event.getPlayer().getName(),
-        "MESSAGE", event.getMessage()
-      ));
-      for (Player player : plugin.server.getOnlinePlayers()) {
-        player.sendMessage(formatted);
-      }
-      plugin.getServer().getLogger().info(formatted);
+      // color and set format string
+      String coloredMessage = ChatColor.translateAlternateColorCodes('&', event.getMessage());
+      event.setMessage(coloredMessage);
+      String coloredFormatString = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("template"));
+      event.setFormat(coloredFormatString);
 
       if (plugin.getConfig().getBoolean("ping.enable")) {
         // look for pings in text and ping accordingly

@@ -1,4 +1,4 @@
 enable: true
-template: "&2#{PLAYER}&r: #{MESSAGE}"
+template: "&2%s&r: %s"
 ping:
   enable: true

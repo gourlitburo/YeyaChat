@@ -13,7 +13,6 @@ public class Main extends JavaPlugin {
   Logger logger = getLogger();
   Server server = getServer();
   PluginManager manager = Bukkit.getPluginManager();
-  StringFormatter formatter = new StringFormatter();
 
   final String PERM_PING_IMMUNE = "yeyachat.ping.immune";
 
