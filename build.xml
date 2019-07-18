@@ -24,6 +24,7 @@
             <fileset dir="bin"></fileset>
             <fileset file="plugin.yml"></fileset>
             <fileset file="config.yml"></fileset>
+            <zipgroupfileset dir="lib" includes="StringFormatter.jar"/>
         </jar>
     </target>
 

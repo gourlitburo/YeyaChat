@@ -3,25 +3,23 @@ package yy.gourlitburo.yeyachat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
+import yy.gourlitburo.stringformatter.StringFormatter;
+
 class AsyncPlayerChatEventHandler implements Listener {
 
   private Main plugin;
+  private static final StringFormatter formatter = new StringFormatter();
   
   private static final Pattern pingPattern = Pattern.compile("@[A-z0-9_]{3,16}");
 
   public AsyncPlayerChatEventHandler(Main instance) {
     plugin = instance;
-  }
-
-  private static String colorize(String text) {
-    return ChatColor.translateAlternateColorCodes('&', text);
   }
 
   private static void sendPing(Player player) {
@@ -32,10 +30,8 @@ class AsyncPlayerChatEventHandler implements Listener {
   public void onAsyncPlayerChat(AsyncPlayerChatEvent event) {
     if (plugin.getConfig().getBoolean("enable")) {
       // color and set format string
-      String coloredMessage = colorize(event.getMessage());
-      event.setMessage(coloredMessage);
-      String coloredFormatString = colorize(plugin.getConfig().getString("template"));
-      event.setFormat(coloredFormatString);
+      event.setMessage(formatter.processMarkup(formatter.colorize(event.getMessage())));
+      event.setFormat(formatter.colorize(plugin.getConfig().getString("template")));
 
       if (plugin.getConfig().getBoolean("ping.enable") && event.getPlayer().hasPermission(plugin.PERM_PING)) {
         // look for pings in text and ping accordingly
