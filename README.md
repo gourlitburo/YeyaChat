@@ -1,5 +1,28 @@
 # YeyaChat
 
+A chat format plugin for Spigot with pinging and Markdown support.
+
+## Configuration
+
+```yaml
+# file: config.yml
+enable: true  # toggle plugin functionality
+template: "&2%s&r: %s"  # String.format-compatible template string
+ping:
+  enable: true  # toggle pinging functionality
+```
+
+## Markdown
+
+| Markup     | Description       |
+|------------|-------------------|
+| `__`       | <u>Underline</u>  |
+| `**`       | **Bold**          |
+| `*` or `_` | *Italic*          |
+| `~~`       | ~~Strikethrough~~ |
+
+Combinations allowed.
+
 ## License
 
 ```
