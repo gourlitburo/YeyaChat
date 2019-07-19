@@ -3,7 +3,7 @@ name: YeyaChat
 version: 0.1.1
 api-version: 1.14
 author: Zack Guard
-description: A barebones chat message formatter plugin for Spigot, plus optional ping functionality.
+description: A chat format plugin with pinging and Markdown support.
 commands:
   yeyachat:
     aliases: [yc]
