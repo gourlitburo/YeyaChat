@@ -16,7 +16,7 @@ class AsyncPlayerChatEventHandler implements Listener {
   private Main plugin;
   private static final StringFormatter formatter = new StringFormatter();
   
-  private static final Pattern pingPattern = Pattern.compile("@[A-z0-9_]{3,16}");
+  private static final Pattern pingPattern = Pattern.compile("@[A-z0-9_]{1,16}");
 
   public AsyncPlayerChatEventHandler(Main instance) {
     plugin = instance;
