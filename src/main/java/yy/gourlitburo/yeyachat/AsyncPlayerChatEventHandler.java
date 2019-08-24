@@ -40,8 +40,16 @@ class AsyncPlayerChatEventHandler implements Listener {
           String matched = matcher.group(0);
           String name = matched.substring(1, matched.length());
           Player pingee = plugin.server.getPlayer(name);
-          if (pingee != null && !pingee.hasPermission(plugin.PERM_PING_IMMUNE)) {
-            sendPing(pingee);
+          if (pingee != null) {
+            String pingeeName = pingee.getName();
+            if (!pingee.hasPermission(plugin.PERM_PING_IMMUNE)) {
+              sendPing(pingee);
+              plugin.logger.info("Pinged " + pingeeName);
+            } else {
+              plugin.logger.info("Ping matched " + pingeeName + " but they have " + plugin.PERM_PING_IMMUNE);
+            }
+          } else {
+            plugin.logger.info(String.format("Ping: could not find player matching '%s'", name));
           }
         }
       }
