@@ -3,7 +3,7 @@
 
   <artifactId>YeyaChat</artifactId>
   <groupId>yy.gourlitburo</groupId>
-  <version>0.1.3</version>
+  <version>0.1.4</version>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -48,6 +48,14 @@
             <goals>
               <goal>shade</goal>
             </goals>
+            <configuration>
+              <relocations>
+                <relocation>
+                  <pattern>yy.gourlitburo.stringformatter</pattern>
+                  <shadedPattern>yy.gourlitburo.yeyachat.stringformatter</shadedPattern>
+                </relocation>
+              </relocations>
+            </configuration>
           </execution>
         </executions>
       </plugin>
