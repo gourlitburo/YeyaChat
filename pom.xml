@@ -17,9 +17,9 @@
       <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
     </repository>
     <repository>
-      <id>github-gourlitburo</id>
-      <name>GitHub Gourlitburo Apache Maven Packages</name>
-      <url>https://maven.pkg.github.com/gourlitburo/StringFormatter</url>
+      <id>github</id>
+      <name>GitHub Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/z-------------/StringFormatter</url>
     </repository>
   </repositories>
 
@@ -32,8 +32,8 @@
     </dependency>
     <dependency>
       <groupId>yy.gourlitburo</groupId>
-      <artifactId>StringFormatter</artifactId>
-      <version>0.1.3</version>
+      <artifactId>stringformatter</artifactId>
+      <version>0.1.4</version>
     </dependency> 
   </dependencies>
 
