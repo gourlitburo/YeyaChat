@@ -14,7 +14,6 @@ import yy.gourlitburo.stringformatter.StringFormatter;
 class AsyncPlayerChatEventHandler implements Listener {
 
   private Main plugin;
-  private static final StringFormatter formatter = new StringFormatter();
   
   private static final Pattern pingPattern = Pattern.compile("@[A-z0-9_]{1,16}");
 
@@ -30,8 +29,8 @@ class AsyncPlayerChatEventHandler implements Listener {
   public void onAsyncPlayerChat(AsyncPlayerChatEvent event) {
     if (plugin.getConfig().getBoolean("enable")) {
       // color and set format string
-      event.setMessage(formatter.processMarkup(formatter.colorize(event.getMessage())));
-      event.setFormat(formatter.colorize(plugin.getConfig().getString("template")));
+      event.setMessage(StringFormatter.processMarkup(StringFormatter.colorize(event.getMessage())));
+      event.setFormat(StringFormatter.colorize(plugin.getConfig().getString("template")));
 
       if (plugin.getConfig().getBoolean("ping.enable") && event.getPlayer().hasPermission(plugin.PERM_PING)) {
         // look for pings in text and ping accordingly
